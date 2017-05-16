@@ -1,26 +1,78 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="EasyBrowser" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0fB-ba-drP">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" id="jCA-xO-AFW">
+                                        <textField key="customView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="http://" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" id="XjE-w2-m6x">
+                                            <rect key="frame" x="16" y="7" width="227" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" keyboardType="URL" returnKeyType="go"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="BYZ-38-t0r" id="7uP-Md-JqT"/>
+                                            </connections>
+                                        </textField>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="rewind" id="rm5-bv-mdW">
+                                        <connections>
+                                            <action selector="goBack" destination="Iai-C0-URu" id="xwY-nr-kw5"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="fastForward" id="ITE-lP-LsH">
+                                        <connections>
+                                            <action selector="goForward" destination="Iai-C0-URu" id="3q5-cw-Bia"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <webView contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="Iai-C0-URu">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Iai-C0-URu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0Dw-H1-XCO"/>
+                            <constraint firstItem="Iai-C0-URu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="2WU-65-0z8"/>
+                            <constraint firstItem="Iai-C0-URu" firstAttribute="top" secondItem="0fB-ba-drP" secondAttribute="bottom" id="CMZ-43-uvp"/>
+                            <constraint firstAttribute="trailing" secondItem="0fB-ba-drP" secondAttribute="trailing" id="JHg-wF-YP8"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Iai-C0-URu" secondAttribute="bottom" id="d2M-Jh-cuQ"/>
+                            <constraint firstAttribute="trailing" secondItem="Iai-C0-URu" secondAttribute="trailing" id="giQ-XH-tcc"/>
+                            <constraint firstItem="0fB-ba-drP" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="h0E-ST-gzp"/>
+                            <constraint firstItem="0fB-ba-drP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="uqk-z0-T5T"/>
+                            <constraint firstItem="0fB-ba-drP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="xxa-3K-S4T"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="webView" destination="Iai-C0-URu" id="amO-Cq-Stx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="31.875" y="36.971830985915496"/>
         </scene>
     </scenes>
 </document>
